@@ -16,6 +16,7 @@
     ],
     "require": {
         "doctrine/orm": "^2.12",
-        "psr/http-message": "^1.0"
+        "psr/http-message": "^1.0",
+        "codevia/request-analyzer": "^1.0"
     }
 }

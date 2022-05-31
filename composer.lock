@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee5743f5b04dc2df4f52cec323661111",
+    "content-hash": "6daa218d46f1a8e5bf3bb3b5e2deb512",
     "packages": [
+        {
+            "name": "codevia/request-analyzer",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codevia-io/request-analyzer.git",
+                "reference": "ba7857df26a0a86f61b23d331afc5b0c17060476"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codevia-io/request-analyzer/zipball/ba7857df26a0a86f61b23d331afc5b0c17060476",
+                "reference": "ba7857df26a0a86f61b23d331afc5b0c17060476",
+                "shasum": ""
+            },
+            "require": {
+                "psr/http-message": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codevia\\RequestAnalyzer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vincent Bathelier",
+                    "email": "53569029+d9beuD@users.noreply.github.com"
+                }
+            ],
+            "description": "This is a PSR-7 request analyzer to easily find usefull data such as pagination query params",
+            "support": {
+                "issues": "https://github.com/codevia-io/request-analyzer/issues",
+                "source": "https://github.com/codevia-io/request-analyzer/tree/v1.0.0"
+            },
+            "time": "2022-05-31T15:16:34+00:00"
+        },
         {
             "name": "doctrine/cache",
             "version": "2.2.0",
