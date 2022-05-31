@@ -2,6 +2,7 @@
 
 namespace Codevia\DoctrineQueryHelper;
 
+use Codevia\RequestAnalyzer\RequestAnalizer;
 use Doctrine\ORM\QueryBuilder;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -39,5 +40,24 @@ abstract class QueryHelper
         );
         
         $queryBuilder->setParameter('query', '%' . $query . '%');
+    }
+
+    /**
+     * Paginate a Doctrine query
+     * @param QueryBuilder           $queryBuilder The Doctrine QueryBuilder
+     * @param ServerRequestInterface $request      The PSR-7 Request object
+     * @return void 
+     */
+    public static function paginate(
+        QueryBuilder $queryBuilder,
+        ServerRequestInterface $request
+    ): void
+    {
+        $pagination = RequestAnalizer::getPagination($request);
+        $page = $pagination['page'];
+        $limit = $pagination['limit'];
+
+        $queryBuilder->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit);
     }
 }
