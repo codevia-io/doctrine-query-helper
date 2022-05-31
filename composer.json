@@ -1,0 +1,21 @@
+{
+    "name": "codevia/doctrine-query-helper",
+    "description": "A set of Doctrine ORM QueryBuilder helpers",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Codevia\\DoctrineQueryHelper\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vincent Bathelier",
+            "email": "53569029+d9beuD@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.12",
+        "psr/http-message": "^1.0"
+    }
+}
