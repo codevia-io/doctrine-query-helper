@@ -73,7 +73,7 @@ abstract class QueryHelper
      * @throws RuntimeException 
      * @throws InvalidArgumentException 
      */
-    public function includeRelationships(
+    public static function includeRelationships(
         QueryBuilder $qb,
         string $alias,
         array $relationships
