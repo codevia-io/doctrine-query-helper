@@ -4,12 +4,14 @@ namespace Codevia\DoctrineQueryHelper;
 
 use Codevia\RequestAnalyzer\RequestAnalizer;
 use Doctrine\ORM\QueryBuilder;
+use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
+use RuntimeException;
 
 abstract class QueryHelper
 {
     /**
-     * Search 
+     * Search in entity fields for the requested value.
      * @param QueryBuilder           $queryBuilder The Doctrine QueryBuilder
      * @param ServerRequestInterface $request      The PSR-7 Request object
      * @param string $alias  The entity alias
@@ -43,7 +45,7 @@ abstract class QueryHelper
     }
 
     /**
-     * Paginate a Doctrine query
+     * Paginate a Doctrine query.
      * @param QueryBuilder           $queryBuilder The Doctrine QueryBuilder
      * @param ServerRequestInterface $request      The PSR-7 Request object
      * @return void 
@@ -59,5 +61,26 @@ abstract class QueryHelper
 
         $queryBuilder->setFirstResult(($page - 1) * $limit)
             ->setMaxResults($limit);
+    }
+
+
+    /**
+     * Easily include relationships
+     * @param QueryBuilder $qb            The Doctrine QueryBuilder
+     * @param string       $alias         The entity alias
+     * @param array        $relationships The relationships fields
+     * @return void 
+     * @throws RuntimeException 
+     * @throws InvalidArgumentException 
+     */
+    protected function includeRelationships(
+        QueryBuilder $qb,
+        string $alias,
+        array $relationships
+    ): void {
+        foreach ($relationships as $field => $fieldAlias) {
+            $qb->leftJoin($alias . '.' . $field, $fieldAlias);
+            $qb->addSelect($fieldAlias);
+        }
     }
 }
